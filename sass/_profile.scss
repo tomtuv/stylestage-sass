@@ -1,78 +1,40 @@
 .profile {
-  width: 95vw;
-  max-width: 80ch;
-  margin: 1rem auto 10vh;
-  padding: 1.25rem;
-  z-index: 1;
+  display: grid;
+  grid-area: profile;
+  place-items: center;
+  align-content: center;
+  padding: 0 var(--spacer-x);
+  background-image: var(--pattern);
+  background-position: var(--pattern-position);
+  background-size: var(--pattern-size);
 
-  h4 {
-    margin: 0;
-    color: var(--color-secondary);
-    text-align: center;
+  @media (min-width: $md) {
+    --spacer-x: 2rem;
   }
 
   .container {
     display: grid;
-    justify-items: center;
-    grid-gap: 1rem;
+    row-gap: 1rem;
+    width: 100%;
+    padding: calc(var(--spacer-x) * 2);
+    background-color: white;
+    box-shadow: inset 0 0 0 var(--spacer-x) white,
+      inset 0 0 0 calc(var(--spacer-x) + 1px);
 
-    > a {
-      min-height: 2em;
-      border: 2px solid currentColor;
-      color: var(--color-secondary);
+    @media (min-width: $md) {
+      --spacer-x: 2rem;
+      grid-template-areas: "title text" "title text" "title text";
+      grid-auto-columns: 1fr 1fr;
+      max-width: calc(var(--container) + var(--spacer-x) * 4);
     }
   }
 
-  ul {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 0;
-    padding: 0;
-    list-style: none;
+  h4 {
+    font-size: var(--font-size-h2);
 
-    li {
-      display: flex;
-      padding: 0.45em;
-
-      span:nth-child(1) {
-        width: auto;
-        margin-right: 0.25em;
-        font-weight: var(--font-weight-strong);
-      }
-
-      span:nth-child(2) {
-        flex-grow: 1;
-        word-break: break-word;
-
-        a {
-          color: inherit;
-        }
-      }
-    }
-  }
-
-  @media (min-width: 180ch) {
-    position: fixed;
-    right: 2vmin;
-    bottom: 2vmin;
-    max-width: 30ch;
-    margin-bottom: 0;
-    border-radius: var(--border-radius);
-    background-color: var(--color-light);
-    box-shadow: 0 2px 5px rgba(color(primary), 0.15);
-
-    ul {
-      justify-content: unset;
-
-      li {
-        padding: 0;
-
-        span:nth-child(1) {
-          width: 8ch;
-          margin-right: 0;
-        }
-      }
+    @media (min-width: $md) {
+      grid-area: title;
+      padding-right: 5rem;
     }
   }
 }

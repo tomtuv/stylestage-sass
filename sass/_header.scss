@@ -1,23 +1,62 @@
 header {
-  --logomark-height: 3em;
-  --logomark-padding: 0 1em;
+  grid-area: header;
 
-  display: grid;
-  min-height: 40vh;
-  place-items: center;
-  padding: 10vh 2rem;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='72' viewBox='0 0 36 72'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%233a00ff' fill-opacity='0.4'%3E%3Cpath d='M2 6h12L8 18 2 6zm18 36h12l-6 12-6-12z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='72' viewBox='0 0 36 72'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23d42257' fill-opacity='0.4'%3E%3Cpath d='M2 6h12L8 18 2 6zm18 36h12l-6 12-6-12z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  background-repeat: repeat-x;
-  background-position: 0 -38px, 17px -40px;
-  color: var(--color-primary);
-  text-align: center;
+  .container {
+    display: grid;
+    grid-template-areas:
+      "title title title"
+      ". subtitle ."
+      ". paragraph ."
+      ". link .";
+    grid-auto-columns: var(--spacer-x) 1fr var(--spacer-x);
+    align-content: start;
+    justify-content: normal;
+    padding-bottom: var(--spacer-y);
+
+    @media (min-width: $lg) {
+      --spacer-x: 10rem;
+      grid-auto-columns: minmax(var(--spacer-x), 1fr)
+        minmax(0, var(--container)) minmax(var(--spacer-x), 1fr);
+    }
+  }
 
   h1 {
-    @include logomark;
+    display: grid;
+    grid-area: title;
+    align-items: center;
+    width: 100%;
+    height: 15rem;
+    padding: 0 var(--spacer-x);
+    margin-bottom: var(--spacer-y);
+    color: white;
+    background-image: var(--pattern);
+    background-position: var(--pattern-position);
+    background-size: var(--pattern-size);
+
+    @media (min-width: $sm) {
+      height: max(15rem, calc(50vh - var(--navbar-height)));
+    }
+
+    @media (min-width: $lg) {
+      --spacer-x: 10rem;
+    }
   }
 
   h2 {
-    max-width: 30ch;
+    grid-area: subtitle;
+  }
+
+  p {
+    grid-area: paragraph;
+
+    @media (min-width: $md) {
+      font-size: 1.125rem;
+    }
+
+    + a {
+      grid-area: link;
+      justify-self: start;
+      margin-top: 2rem;
+    }
   }
 }

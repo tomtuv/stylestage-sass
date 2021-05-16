@@ -1,35 +1,48 @@
 nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  overflow-x: auto;
+  background-color: white;
+  border-bottom: 1px solid;
+
   ul {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 0;
-    padding: 0;
-    list-style: none;
 
-    a {
-      display: inline-grid;
-      padding: 0.5rem;
-      color: var(--color-secondary);
-      font-size: 1.25rem;
-      text-decoration: none;
+    &::before {
+      padding: var(--button-padding);
+      font-weight: 700;
+      white-space: nowrap;
+      pointer-events: auto;
+      content: "Style Stage";
+      border-right: 1px solid;
 
-      &::before {
-        width: 100%;
-        height: 0.33em;
-        background-color: var(--color-secondary);
-        opacity: 0.15;
-        content: "";
-      }
-
-      &:hover::before,
-      &:focus::before {
-        opacity: 1;
+      @media (min-width: $md) {
+        --button-padding: 1.75rem 2rem;
       }
     }
+  }
 
-    li {
-      margin: 0.25rem;
+  li {
+    border-right: 1px solid;
+  }
+
+  a {
+    display: block;
+    padding: var(--button-padding);
+    text-decoration: none;
+    white-space: nowrap;
+    transition-timing-function: var(--transition-timing-function);
+    transition-duration: var(--transition-duration);
+    transition-property: color, background-color;
+
+    @media (min-width: $md) {
+      --button-padding: 1.75rem 2rem;
+    }
+
+    &:is(:hover, :focus) {
+      color: white;
+      background-color: black;
     }
   }
 }

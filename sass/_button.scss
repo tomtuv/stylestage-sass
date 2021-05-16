@@ -1,0 +1,30 @@
+[class^="link-"]:not(.link-allstyles) {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--button-padding);
+  color: white;
+  text-decoration: none;
+  background-color: black;
+  transition-timing-function: var(--transition-timing-function);
+  transition-duration: var(--transition-duration);
+  transition-property: color, background-color, box-shadow;
+
+  &:is(:hover, :focus) {
+    color: black;
+    background-color: white;
+    box-shadow: 0 0 0 1px black;
+  }
+
+  > span,
+  > svg {
+    display: flex;
+    align-items: center;
+    margin-right: 0.5rem;
+  }
+
+  svg {
+    width: 1rem;
+    height: 1rem;
+    fill: currentColor;
+  }
+}

@@ -1,0 +1,30 @@
+:root {
+  --font-family: "Inter", sans-serif;
+  --font-size-h1: 2.5rem;
+  --font-size-h2: 1.5rem;
+  --font-size-h3: 1.25rem;
+  --line-height-body: 1.5;
+  --line-height-heading: 1.25;
+  --spacer-x: 1.5rem;
+  --spacer-y: 3.5rem;
+  --container: 40rem;
+  --navbar-height: calc(var(--spacer-y) + 1px);
+  --button-padding: 1rem 1.5rem;
+  --pattern: radial-gradient(white 0.5px, transparent 0.5px),
+    radial-gradient(white 0.5px, black 0.5px);
+  --pattern-position: 0 0, 1.5rem 1.5rem;
+  --pattern-size: 3rem 3rem;
+  --transition-timing-function: linear;
+  --transition-duration: 0.15s;
+
+  @media (min-width: $md) {
+    --spacer-y: 5rem;
+    --font-size-h1: 4rem;
+    --font-size-h2: 2rem;
+    --font-size-h3: 1.5rem;
+  }
+
+  @media (min-width: $lg) {
+    --font-size-h1: 6rem;
+  }
+}

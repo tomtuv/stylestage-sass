@@ -1,0 +1,26 @@
+.skip-link {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+
+  &:focus {
+    position: fixed;
+    top: var(--navbar-height);
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 2.5rem;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    background-color: white;
+    border-bottom: 1px solid;
+  }
+}

@@ -1,0 +1,95 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  scroll-snap-type: x mandatory;
+
+  @media (prefers-reduced-motion: no-preference) {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  display: grid;
+  grid-template-areas:
+    "header main profile styles footer"
+    "header main profile styles sponsor";
+  grid-auto-rows: 1fr auto;
+  grid-auto-columns: calc(100vw - var(--spacer-x));
+  height: 100vh;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  font-family: var(--font-family);
+  line-height: var(--line-height-body);
+  background-color: white;
+
+  @supports (-webkit-touch-callout: none) {
+    height: -webkit-fill-available;
+  }
+
+  @media (min-width: $md) {
+    grid-auto-columns: calc(100vw - 5rem);
+  }
+}
+
+h1,
+h2,
+h3,
+h4 {
+  line-height: var(--line-height-heading);
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+  font-weight: 900;
+}
+
+h2 {
+  margin-bottom: 1.5rem;
+  font-size: var(--font-size-h2);
+}
+
+h3 {
+  margin-bottom: 1rem;
+  font-size: var(--font-size-h3);
+}
+
+p + p {
+  margin-top: 1rem;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-underline-offset: 0.25em;
+
+  &:is(:hover, :focus) {
+    text-decoration-style: double;
+  }
+}
+
+header,
+main,
+aside,
+.page-footer {
+  overflow-x: hidden;
+  overflow-y: auto;
+  border-right: 1px solid;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+:is(header, main, aside, .page-footer) > .container {
+  margin-top: var(--navbar-height);
+}
